@@ -1,0 +1,130 @@
+
+<div class="row">
+    <div class="col-3">
+      <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-9">
+   
+<div class = "card" *ngIf="!editMode">
+   
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Shop</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Location</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Image</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+   
+  
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let offer of offers">
+
+ 
+  
+
+
+      <td class="td">{{offer.name}}</td>
+   
+     
+      <td class="td">{{offer.category}}</td>
+      <td class="td">{{offer.description}}</td>
+      <td class="td">{{offer.location}}</td>
+      <td class="td">{{offer.email}}</td>
+      <td class="td">{{offer.phone}}</td>
+      <td class="td"><img src="{{offer.image}}" alt="image" width="100" height="100"></td>
+
+
+
+   
+
+    
+    
+        <td class="td"><button type="button" class="btn btn-danger" (click)="deleteShop(offer._id)" >Delete</button>  &nbsp;&nbsp;</td>
+        <td class="td"> <button type="button" class="btn btn-primary" *ngIf="!editMode" (click)="editOffer(offer)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="card" *ngIf="editMode"> 
+    <div class="card-header">
+        <h3 style="text-align: center;">Edit Shop</h3>
+    </div>
+    <div class="card1">
+      <form class="mt-5" [formGroup]="form" (submit)="onSubmit()" >
+        <div class="form-group">
+          <label for="name"><b>Name</b></label>
+          <br>
+          <input style="width: 350px;" class="form-control"  [(ngModel)]="name" formControlName="name" id="name" name="name" type="text">
+          </div>
+  <div class="form-group">
+        <label for="category"><b>Category</b></label>
+      
+        <select style="width: 150px;" class="form-control" [(ngModel)]="category" formControlName="category" id="category" name="category" placeholder="select category" >
+          <option value="FOOD">FOOD</option>
+          <option value="HOTEL">HOTEL</option>
+          <option value="ELELECRONIC">ELELECRONIC</option>
+        </select> 
+  </div>
+    
+  <div class="form-group">
+    <label for="category"><b>Search Location</b></label>
+    <br>
+        <input style="width:300px" ngx-google-places-autocomplete  [(ngModel)]="location" formControlName="location"  (onAddressChange)="From($event)" type="text"
+          placeholder="Search location" class="form-control">
+      </div>
+   
+    <div class="cardMap">
+      <agm-map style="height:500px; " [latitude]="7.448153415867239" [longitude]="80.72284109804686" [zoom]="8">
+        <agm-marker *ngFor="let marker of markerPositions" [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+      </agm-map>
+    </div>
+  
+  
+  
+    <div class="form-group">
+      <label for="category"><b> Description</b></label>
+      <br>
+      <textarea style="width: 500px;" class="form-control"  [(ngModel)]="description" id="description" formControlName="description" name="description" rows="3"></textarea>
+  
+    </div>
+    <div class="form-group">
+      <label for="category"><b> Image</b></label>
+      <br>
+      <input style="width: 500px;" class="form-control" id="image" (change)="uploadImage($event)" name="image" type="file">
+      </div>
+  
+      <div class="form-group">
+        <label for="category"><b>Email</b></label>
+        <br>
+        <input style="width: 500px;" class="form-control"   [(ngModel)]="email" formControlName="email" id="title" name="email" type="email">
+        </div>
+  
+        <div class="form-group">
+          <label for="category"><b>Phone No:</b></label>
+          <br>
+          <input style="width: 500px;" class="form-control"  [(ngModel)]="phone" formControlName="phone" id="phone" name="phone" type="text">
+          </div>
+  
+      <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  
+  </form>
+  </div>
+</div>
+
+
+
+
+

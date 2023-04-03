@@ -1,0 +1,16 @@
+
+
+
+<div class="row">
+    <div class="col-3">
+      <app-dashboard></app-dashboard>
+    </div>
+    <div class="col-9">
+<div class="card">
+
+
+<div class="cardMap">
+  <agm-map style="height:500px; " [latitude]="lat" [longitude]="lng" [zoom]="8">
+    <agm-marker *ngFor="let marker of offers" [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+  </agm-map>
+</div>

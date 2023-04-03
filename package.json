@@ -1,5 +1,5 @@
 {
-  "name": "promoapp",
+  "name": "app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,14 +10,19 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^3.0.0-beta.0",
+    "@agm/snazzy-info-window": "^3.0.0-beta.0",
     "@angular/animations": "^14.1.0",
     "@angular/common": "^14.1.0",
-    "@angular/compiler": "^14.1.0",
+    "@angular/compiler": "^7.0.1 || ^14.1.0",
     "@angular/core": "^14.1.0",
     "@angular/forms": "^14.1.0",
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "firebase": "^9.17.2",
+    "ngx-google-places-autocomplete": "^2.0.5",
+    "onesignal-ngx": "^1.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -26,6 +31,8 @@
     "@angular-devkit/build-angular": "^14.1.0",
     "@angular/cli": "~14.1.0",
     "@angular/compiler-cli": "^14.1.0",
+    "@netlify-builder/deploy": "^5.0.0",
+    "@types/googlemaps": "^3.43.3",
     "@types/jasmine": "~4.0.0",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
